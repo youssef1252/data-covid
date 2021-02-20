@@ -40,6 +40,10 @@ export class ChartGrapheComponent implements OnInit {
   public bsValue;
 
   ranges: any = [{
+    value: [new Date(new Date().setDate(new Date().getDate() - 2)), new Date()],
+    label: '24h'
+  },
+  {
     value: [new Date(new Date().setDate(new Date().getDate() - 7)), new Date()],
     label: 'Dérniers 7 jours'
   },{

@@ -71,6 +71,7 @@ export class CoronaService {
     this.importedDate$.subscribe(response => {
       if (response) {
         let currentDate = this.formatDate(new Date(response['created_at']), true);
+        console.log(currentDate);
       const loadDataByCurrentDate$ = this.http.get<Corona[]>('http://localhost:3000/api/corona/france/?startDate='+currentDate)
       .pipe(
         catchError(err => {

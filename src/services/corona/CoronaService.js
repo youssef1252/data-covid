@@ -44,7 +44,7 @@ export default class CoronaService {
 
     getQuery(query, cb) {
         let params = {}
-        if(query.startDate && query.startDate !== '') params.$gte = new Date(query.startDate);
+        if(query.startDate && query.startDate !== '') params.$gte = new Date(new Date(query.startDate).setDate(new Date(query.startDate).getDate()-1));
         if(query.endDate && query.endDate !== '') params.$lt = new Date(new Date(query.endDate).setDate(new Date(query.endDate).getDate()+1));
         cb(params);
     }

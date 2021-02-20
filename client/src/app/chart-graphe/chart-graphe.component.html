@@ -62,23 +62,26 @@
     </div>
   </div>
 </div>
-<div style="display: block">
+<div style="display: block; margin-bottom:60px">
   <h2>Indicateurs liés au COVID-19 par jour</h2>
   <hr>
   <div class="row">
     <div class="col-xs-12 col-12 col-md-4 form-group">
-      <div class="d-flex justify-content-around">
+      <div class="d-flex flex-row">
         <input 
         type="text" 
         placeholder="Depuis - jusqu'à" 
-        class="form-control p-2" 
+        class="form-control col-lg-8" 
         bsDaterangepicker 
         #dp="bsDaterangepicker" 
         [bsConfig]="bsConfig" 
         (bsValueChange)="onDateChange($event)" 
         placement='right'
         [(bsValue)]="bsValue" style="margin-right: 12px;">
-        <button (click) = "clear()" class="btn btn-danger p-2" role="button" [disabled]="disabledButton">Effacer</button> 
+        <select class="form-control  col-lg-6" style="margin-right: 12px;" [(ngModel)]="departement">
+          <option value="">Toute la france</option>
+        </select>
+        <button (click) = "clear()" class="btn btn-danger" role="button" [disabled]="disabledButton">Effacer</button> 
       </div> 
     </div>
     <canvas baseChart
@@ -90,6 +93,7 @@
   </canvas>
   </div>
 </div>
+<hr>
 <div class="col-12">
   <span class="float-right">
     <a href="https://www.data.gouv.fr/fr/datasets/donnees-hospitalieres-relatives-a-lepidemie-de-covid-19/#_" target="__blank">@Source: https://data.gouv.fr</a>
