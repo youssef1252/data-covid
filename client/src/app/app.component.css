@@ -1,0 +1,10 @@
+.content {
+    background-color: #f5f5f9; }
+
+.sidebar {
+    background-color: #f5f5f9; }
+    .sidebar:first-child {
+    border-radius: 5px 0 0 5px; }
+
+.bg-transparent {
+    background-color: transparent !important; }

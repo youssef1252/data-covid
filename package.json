@@ -1,0 +1,29 @@
+{
+  "name": "data-analyse-covid",
+  "version": "1.0.0",
+  "description": "analyse data Covid-19",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js",
+    "import_corona": "node ./src/scripts/import_corona.js",
+    "import_dep": "node ./src/scripts/import_departement.js"
+  },
+  "author": "youssef benkhair",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^2.3.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.5",
+    "glob": "^7.1.6",
+    "mongoose": "^5.10.15",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

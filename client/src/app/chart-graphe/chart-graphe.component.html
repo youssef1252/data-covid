@@ -1,0 +1,99 @@
+<div class="d-flex align-items-center">
+  <h6 class="mt-5 mb-5 flex-grow-1 font-weight-bold">Dashboard</h6>
+  <div class="loupe blue">
+    <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+    </svg>
+  </div>
+</div>
+<app-message></app-message>
+<div class="d-flex" style="margin-bottom: 2rem;">
+  <div class="card alert alert-danger" style="width: 18rem;margin-right: 1rem;padding: 0 !important;">
+    <div class="card-body">
+      <p>RÉANIMATION</p>
+      <p>{{ (labelData$ | async)?.rea }} en 24h</p>
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="font-size: 0.7rem;">
+          <strong>
+            Mise à jour le: <cite title="Source Title">{{ currentDate$ | async }}</cite>
+          </strong>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card alert alert-primary" style="width: 18rem;margin-right: 1rem;padding: 0 !important;">
+    <div class="card-body">
+      <p>HOSPITALISATION</p>
+      <p>{{ (labelData$ | async)?.hosp }} en 24h</p>
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="font-size: 0.7rem;">
+          <strong>
+            Mise à jour le: <cite title="Source Title">{{ currentDate$ | async }}</cite>
+          </strong>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card alert alert-warning" style="width: 18rem;margin-right: 1rem;padding: 0 !important;">
+    <div class="card-body">
+      <p>RETOUR À DOMICILE</p>
+      <p>{{ (labelData$ | async)?.rad }} en 24h</p>
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="font-size: 0.7rem;">
+          <strong>
+            Mise à jour le: <cite title="Source Title">{{currentDate$ | async}}</cite>
+          </strong>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card alert alert-secondary" style="width: 18rem;padding: 0 !important;">
+    <div class="card-body">
+      <p>DÉCÈS</p>
+      <p>{{ (labelData$ | async)?.dc }} en 24h</p>
+      <blockquote class="blockquote mb-0">
+        <footer class="blockquote-footer" style="font-size: 0.7rem;">
+          <strong>
+            Mise à jour le: <cite title="Source Title">{{ currentDate$ | async }}</cite>
+          </strong>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+<div style="display: block">
+  <h2>Indicateurs liés au COVID-19 par jour</h2>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+      <div class="d-flex justify-content-around">
+        <input 
+        type="text" 
+        placeholder="Depuis - jusqu'à" 
+        class="form-control p-2" 
+        bsDaterangepicker 
+        #dp="bsDaterangepicker" 
+        [bsConfig]="bsConfig" 
+        (bsValueChange)="onDateChange($event)" 
+        placement='right'
+        [(bsValue)]="bsValue" style="margin-right: 12px;">
+        <button (click) = "clear()" class="btn btn-danger p-2" role="button" [disabled]="disabledButton">Effacer</button> 
+      </div> 
+    </div>
+    <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+  </canvas>
+  </div>
+</div>
+<div class="col-12">
+  <span class="float-right">
+    <a href="https://www.data.gouv.fr/fr/datasets/donnees-hospitalieres-relatives-a-lepidemie-de-covid-19/#_" target="__blank">@Source: https://data.gouv.fr</a>
+  </span>
+</div>
+<div class="clearfix"></div>
+<hr>

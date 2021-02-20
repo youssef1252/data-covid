@@ -1,0 +1,11 @@
+.loupe {
+    cursor: pointer;
+    background-color: #dfe7ff;
+    border-radius: 3px;
+    width: 35px;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px; }

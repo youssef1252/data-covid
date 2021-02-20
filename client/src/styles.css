@@ -1,0 +1,13 @@
+.font-weight-bold {
+  font-weight: 700 !important; }
+.blue {
+    color: #5e81f4; }
+
+html, body {
+  background-color: #c9cfde;
+  height: 100vh; 
+}
+
+.row {
+  height: 100vh; }
+  
